@@ -6,6 +6,7 @@ function handleReport(req, res) {
     path: req.path,
     platform: req.params.platform || null,
     version: req.params.version || null,
+    buildNum: req.query.buildNum || null,
     userAgent: req.get("User-Agent"),
     report: req.body,
   };
