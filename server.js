@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const { PORT } = require("./config");
 const corsMiddleware = require("./middleware/cors");
 const { initStore } = require("./services/reportStore");
@@ -8,6 +9,9 @@ const app = express();
 
 // Initialize report storage
 initStore();
+
+// Serve static files from public directory
+app.use(express.static(path.join(__dirname, "public")));
 
 // Parse CSP report content types
 app.use(express.json({ type: "application/csp-report" }));
